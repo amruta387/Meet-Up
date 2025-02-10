@@ -1,3 +1,20 @@
+## User Stories
+# Feature 1: Filter Events By City
+    As a user, I should be able to filter events by city so that I can see events relevant to my location.
+# Feature 2: Show/Hide Event Details
+    As a user, I should be able to expand an event so that I can see more details.
+    As a user, I should be able to collapse an event so that I can hide details.
+# Feature 3: Specify Number of Events
+    As a user, I should be able to specify the number of events so that I can control how many events I see.
+# Feature 4: Use the App When Offline
+    As a user, I should be able to see cached data when offline so that I can still access event information.
+    As a user, I should be notified if changes can’t be made offline so that I understand why my actions aren’t working.
+# Feature 5: Add an App Shortcut to the Home Screen
+    As a user, I should be able to install the app as a shortcut so that I can access it quickly.
+# Feature 6: Display Charts Visualizing Event Details
+    As a user, I should be able to see a chart with the number of upcoming events so that I can understand event trends.
+
+
 ## Gherkin Scenarios
 # Feature 1: Filter Events By City
     Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities

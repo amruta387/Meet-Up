@@ -1,22 +1,22 @@
 ## User Stories
-# Feature 1: Filter Events By City
+* Feature 1: Filter Events By City
     As a user, I should be able to filter events by city so that I can see events relevant to my location.
-# Feature 2: Show/Hide Event Details
+* Feature 2: Show/Hide Event Details
     As a user, I should be able to expand an event so that I can see more details.
     As a user, I should be able to collapse an event so that I can hide details.
-# Feature 3: Specify Number of Events
+* Feature 3: Specify Number of Events
     As a user, I should be able to specify the number of events so that I can control how many events I see.
-# Feature 4: Use the App When Offline
+* Feature 4: Use the App When Offline
     As a user, I should be able to see cached data when offline so that I can still access event information.
     As a user, I should be notified if changes can’t be made offline so that I understand why my actions aren’t working.
-# Feature 5: Add an App Shortcut to the Home Screen
+* Feature 5: Add an App Shortcut to the Home Screen
     As a user, I should be able to install the app as a shortcut so that I can access it quickly.
-# Feature 6: Display Charts Visualizing Event Details
+* Feature 6: Display Charts Visualizing Event Details
     As a user, I should be able to see a chart with the number of upcoming events so that I can understand event trends.
 
 
 ## Gherkin Scenarios
-# Feature 1: Filter Events By City
+* Feature 1: Filter Events By City
     Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
         Given the user has not searched for a city  
         When they open the app  
@@ -29,7 +29,7 @@
         Given the user sees a list of suggested cities  
         When they select a city  
         Then the app should display events from the selected city  
-# Feature 2: Show/Hide Event Details
+* Feature 2: Show/Hide Event Details
     Scenario 1: An event element is collapsed by default
         Given the user is viewing the event list  
         When they first load the events  
@@ -42,7 +42,7 @@
         Given the event details are expanded  
         When the user clicks on the event again  
         Then the event details should collapse  
-# Feature 3: Specify Number of Events
+* Feature 3: Specify Number of Events
     Scenario 1: When user hasn’t specified a number, 32 events are shown by default
         Given the user has not set a number of events  
         When they open the app  
@@ -51,7 +51,7 @@
         Given the user wants to change the number of displayed events  
         When they enter a specific number  
         Then the app should update to display that number of events  
-# Feature 4: Use the App When Offline
+* Feature 4: Use the App When Offline
     Scenario 1: Show cached data when there’s no internet connection
         Given the user has accessed the app before. And there is no internet connection  
         When they open the app  
@@ -60,12 +60,12 @@
         Given the user is offline  
         When they try to change the city or number of events  
         Then an error message should be displayed  
-# Feature 5: Add an App Shortcut to the Home Screen
+* Feature 5: Add an App Shortcut to the Home Screen
     Scenario 1: User can install the meet app as a shortcut on their device home screen
         Given the user is using a supported browser  
         When they click the "Add to Home Screen" option  
         Then the app should be installed as a shortcut on their device  
-# Feature 6: Display Charts Visualizing Event Details
+* Feature 6: Display Charts Visualizing Event Details
     Scenario 1: Show a chart with the number of upcoming events in each city
         Given the user is viewing the event list  
         When the app loads event data  

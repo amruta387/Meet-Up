@@ -88,22 +88,22 @@
         getAccessToken.onclick = function () {
             let code = codeValue.value;
 
-            // if the authorization code is not URL-encoded, then URL-encode it.
+        
             if (decodeURIComponent(code) === code) {
                 code = encodeURIComponent(codeValue.value);
             }
 
-            // Debugging log: check if the code is correct
+        
             console.log("Authorization code: ", code);
 
             const getTokenRequest = getToken.replace("{code}", code);
 
-            // Debugging log: check the final API URL
+        
             console.log("Token API Request URL: ", getTokenRequest);
 
             fetch(getTokenRequest)
                 .then(function (response) {
-                    // Debugging log: Check if response is OK
+                
                     console.log("Response status: ", response.status);
                     return response.json();
                 })
@@ -112,58 +112,60 @@
                     console.log("API Response: ", json);
 
                     if (json && json.access_token) {
-                        // Display access token
+                        
                         accessTokenElement.innerText = "Access Token: " + json.access_token;
                     } else {
                         accessTokenElement.innerText = "Error: No access token received.";
                     }
                 })
                 .catch(function (error) {
-                    // Log any error encountered in fetching
+                    
                     console.error("Error fetching access token: ", error);
                     accessTokenElement.innerText = "Error: " + error.message;
                 });
         };
+         // --------------------- END OF STEP 2
 
-const getEvents = document.getElementById("getEvents");
-const events = document.getElementById("events");
+         // ---------------------STEP 3
+        const getEvents = document.getElementById("getEvents");
+        const events = document.getElementById("events");
 
-// Replace with your actual deployed API endpoint
-const getCalendarEvents = "https://lflnl3z5x4.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
+        // Replace with your actual deployed API endpoint
+        const getCalendarEvents = "https://lflnl3z5x4.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
-getEvents.onclick = function () {
-    try {
-        // Extract the access token from the displayed text
-        const accessTokenText = accessTokenElement.innerText;
-        const accessToken = accessTokenText.replace("Access Token: ", "").trim();
+        getEvents.onclick = function () {
+            try {
+                // Extract the access token from the displayed text
+                const accessTokenText = accessTokenElement.innerText;
+                const accessToken = accessTokenText.replace("Access Token: ", "").trim();
 
-        if (!accessToken) {
-            events.innerText = "Error: No access token found. Please get a token first.";
-            return;
-        }
+                if (!accessToken) {
+                    events.innerText = "Error: No access token found. Please get a token first.";
+                    return;
+                }
 
-        const eventRequest = `${getCalendarEvents}/${accessToken}`;
+                const eventRequest = `${getCalendarEvents}/${accessToken}`;
 
-        console.log("Fetching events from:", eventRequest);
-        console.log("Access Token:", accessToken);
-        console.log("Event API Request URL:", eventRequest);
+                console.log("Fetching events from:", eventRequest);
+                console.log("Access Token:", accessToken);
+                console.log("Event API Request URL:", eventRequest);
 
-        fetch(eventRequest)
-            .then((response) => response.json())
-            .then((json) => {
-                console.log("Calendar Events Response:", json);
-                events.innerText = JSON.stringify(json, null, 2);
-            })
-            .catch((error) => {
-                console.error("Error fetching events:", error);
+                fetch(eventRequest)
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log("Calendar Events Response:", json);
+                        events.innerText = JSON.stringify(json, null, 2);
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching events:", error);
+                        events.innerText = "Error: " + error.message;
+                    });
+            } catch (error) {
+                console.error("Unexpected error:", error);
                 events.innerText = "Error: " + error.message;
-            });
-    } catch (error) {
-        console.error("Unexpected error:", error);
-        events.innerText = "Error: " + error.message;
-    }
-};
-// -- END OF STEP 3
+            }
+        };
+        // --------------------- END OF STEP 3
 
 
     </script>

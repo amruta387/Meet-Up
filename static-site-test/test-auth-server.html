@@ -57,7 +57,7 @@
         const resultLink = document.getElementById("authURL");
         // Replace this with your own endpoint
         const getAuthURL =
-            "https://lflnl3z5x4.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
+            "https://s8szwyup2e.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
 
         getAuthUrlButton.onclick = function () {
@@ -82,7 +82,7 @@
         const getAccessToken = document.getElementById("getToken");
         const accessTokenElement = document.getElementById("accessToken");
         const getToken =
-            "https://lflnl3z5x4.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}";
+            "https://s8szwyup2e.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}";
 
 
         getAccessToken.onclick = function () {
@@ -129,9 +129,7 @@
          // ---------------------STEP 3
         const getEvents = document.getElementById("getEvents");
         const events = document.getElementById("events");
-
-        // Replace with your actual deployed API endpoint
-        const getCalendarEvents = "https://lflnl3z5x4.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
+        const getCalendarEvents = "https://s8szwyup2e.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
         getEvents.onclick = function () {
             try {
@@ -145,10 +143,6 @@
                 }
 
                 const eventRequest = `${getCalendarEvents}/${accessToken}`;
-
-                console.log("Fetching events from:", eventRequest);
-                console.log("Access Token:", accessToken);
-                console.log("Event API Request URL:", eventRequest);
 
                 fetch(eventRequest)
                     .then((response) => response.json())
@@ -166,8 +160,6 @@
             }
         };
         // --------------------- END OF STEP 3
-
-
     </script>
 </body>
 

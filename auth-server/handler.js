@@ -83,35 +83,47 @@ module.exports.getAccessToken = async (event) => {
 // Step 3: Get Calendar Events using access token
 module.exports.getCalendarEvents = async (event) => {
     try {
-        const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+        const access_token = decodeURIComponent(
+            `${event.pathParameters.access_token}`
+        );
         oAuth2Client.setCredentials({ access_token });
 
         // Fetch calendar events
-        const response = await calendar.events.list({
-            calendarId: CALENDAR_ID,
-            auth: oAuth2Client,
-            timeMin: new Date().toISOString(),
-            singleEvents: true,
-            orderBy: "startTime",
+        const events = await new Promise((resolve, reject) => {
+            calendar.events.list(
+                {
+                    calendarId: CALENDAR_ID,
+                    auth: oAuth2Client,
+                    timeMin: new Date().toISOString(),
+                    singleEvents: true,
+                    orderBy: 'startTime',
+                },
+                (error, response) => {
+                    if (error) {
+                        return reject(error);
+                    }
+                    return resolve(response);
+                }
+            );
         });
 
         return {
             statusCode: 200,
             headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
             },
-            body: JSON.stringify({ events: response.data.items }),
+            body: JSON.stringify({ events: events.data.items }),
         };
     } catch (error) {
         console.error('getCalendarEvents Error:', error);
         return {
             statusCode: 500,
             headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
             },
-            body: JSON.stringify({ error: 'Error fetching calendar events' }),
+            body: JSON.stringify(error),
         };
     }
 };

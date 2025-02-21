@@ -9,15 +9,19 @@ const CitySearch = ({ allLocations }) => {
     const handleInputChanged = (event) => {
         const value = event.target.value;
         const filteredLocations = allLocations ? allLocations.filter((location) =>
-                location ? location.toUpperCase().includes(value.toUpperCase()) : false
-            )
+            location ? location.toUpperCase().includes(value.toUpperCase()) : false
+        )
             : [];
 
         setQuery(value);
         setSuggestions(filteredLocations);
     };
 
-
+    const handleItemClicked = (event) => {
+        const value = event.target.textContent;
+        setQuery(value);
+        setShowSuggestions(false); // to hide the list
+    };
     return (
         <div id="city-search">
             <input
@@ -28,18 +32,20 @@ const CitySearch = ({ allLocations }) => {
                 onFocus={() => setShowSuggestions(true)}
                 onChange={handleInputChanged}
             />
-            {showSuggestions && (
+            {showSuggestions ?
                 <ul className="suggestions">
-                    {suggestions.map((suggestion) => (
-                        <li key={suggestion}>{suggestion}</li>
-                    ))}
-                    <li key="See all cities">
+                    {suggestions.map((suggestion) => {
+                        return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
+                    })}
+                    <li key='See all cities' onClick={handleItemClicked}>
                         <b>See all cities</b>
                     </li>
                 </ul>
-            )}
+                : null
+            }
         </div>
-    );
+    )
+
 };
 
 export default CitySearch;

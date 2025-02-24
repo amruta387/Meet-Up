@@ -21,4 +21,11 @@ describe('<App /> component', () => {
     test('render CitySearch', () => {
         expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
     });
+
+    test('renders NumberOfEvents', () => {
+        const { container } = render(<App />); // Use render() to get the container
+        const numberOfEvents = container.querySelector('#number-of-events');
+        expect(numberOfEvents).toBeInTheDocument();
+    });
+
 });

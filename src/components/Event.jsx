@@ -1,12 +1,28 @@
-// src/components/Event.jsx
-import React from 'react';
+// src/components/Event.js
 
+import React, { useState } from "react";
+// eslint-disable-next-line react/prop-types
+const Event = ({ event }) => {
+	const [showDetails, setShowDetails] = useState(false);
+	return (
+		<li className="event">
+			<h2>{event && event.summary}</h2>
+			<p className="event-location">{event.location}</p>
 
-const Event = () => {
-    return (
-        <li></li>
-    );
-}
-
+			<p>{event && new Date(event.created).toUTCString()}</p>
+			{showDetails ? (
+				<p className="details">{event && event.description}</p>
+			) : null}
+			<button
+				className="details-btn"
+				onClick={() => {
+					showDetails ? setShowDetails(false) : setShowDetails(true);
+				}}
+			>
+				{showDetails ? "hide details" : "show details"}
+			</button>
+		</li>
+	);
+};
 
 export default Event;

@@ -24,5 +24,6 @@ export const extractLocations = (events) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-    return mockData;
+    // Ensure only events with a location are returned
+    return mockData.filter(event => event.location !== undefined && event.location !== null);
 };

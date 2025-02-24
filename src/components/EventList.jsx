@@ -1,5 +1,3 @@
-
-// src/components/EventList.jsx
 import React from 'react';
 import Event from "./Event";
 

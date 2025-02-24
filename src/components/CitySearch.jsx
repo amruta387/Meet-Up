@@ -1,6 +1,6 @@
-// src/components/CitySearch.jsx
+
 import React, { useState } from 'react';
-// eslint-disable-next-line react/prop-types
+
 const CitySearch = ({ allLocations }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [query, setQuery] = useState("");

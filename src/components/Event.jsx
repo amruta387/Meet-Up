@@ -1,7 +1,5 @@
-// src/components/Event.js
 
 import React, { useState } from "react";
-// eslint-disable-next-line react/prop-types
 const Event = ({ event }) => {
 	const [showDetails, setShowDetails] = useState(false);
 	return (

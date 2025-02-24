@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1740396659030" clover="3.2.0">
-  <project timestamp="1740396659031" name="All files">
+<coverage generated="1740399568133" clover="3.2.0">
+  <project timestamp="1740399568134" name="All files">
     <metrics statements="53" coveredstatements="53" conditionals="30" coveredconditionals="27" methods="19" coveredmethods="19" elements="102" coveredelements="99" complexity="0" loc="53" ncloc="53" packages="2" files="7" classes="7"/>
     <package name="src">
       <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
@@ -56,30 +56,30 @@
       </file>
       <file name="Event.jsx" path="C:\Users\Lenovo\Desktop\Career Foundry Tasks\Full stack immersion\Achievement 4\Meet-Up\src\components\Event.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="6" count="41" type="stmt"/>
-        <line num="7" count="41" type="stmt"/>
-        <line num="19" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="41" type="stmt"/>
+        <line num="5" count="41" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
       </file>
       <file name="EventList.jsx" path="C:\Users\Lenovo\Desktop\Career Foundry Tasks\Full stack immersion\Achievement 4\Meet-Up\src\components\EventList.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="11" count="32" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="9" count="32" type="stmt"/>
       </file>
       <file name="NumberOfEvents.jsx" path="C:\Users\Lenovo\Desktop\Career Foundry Tasks\Full stack immersion\Achievement 4\Meet-Up\src\components\NumberOfEvents.jsx">
         <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="7" methods="2" coveredmethods="2"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="8" count="4" type="cond" truecount="4" falsecount="0"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="4" falsecount="0"/>
         <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="19" count="11" type="stmt"/>
       </file>
     </package>
   </project>

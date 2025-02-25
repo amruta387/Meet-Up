@@ -40,6 +40,7 @@ const App = () => {
 
   return (
     <div>
+      <h1 className="meetup-heading">MEET-UP</h1>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents
         numberOfEvents={numberOfEvents}

@@ -28,8 +28,10 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
     return (
         <div id="city-search">
+            <label htmlFor="city-search-input" className="city-label">Search:</label>
             <input
                 type="text"
+                id="city-search-input"
                 className="city"
                 placeholder="Search for a city"
                 value={query}
@@ -46,6 +48,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
                     </li>
                 </ul>
                 : null
+
             }
         </div>
     )

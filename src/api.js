@@ -36,8 +36,6 @@ export const getEvents = async () => {
         return mockData;
     }
     const token = await getAccessToken();
-
-
     if (token) {
         removeQuery();
         const url = "https://s8szwyup2e.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
@@ -52,9 +50,8 @@ export const getEvents = async () => {
 
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
+
     const tokenCheck = accessToken && (await checkToken(accessToken));
-
-
     if (!accessToken || tokenCheck.error) {
         await localStorage.removeItem("access_token");
         const searchParams = new URLSearchParams(window.location.search);

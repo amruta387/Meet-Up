@@ -1,6 +1,3 @@
-/* eslint-env jest */
-
-
 import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';

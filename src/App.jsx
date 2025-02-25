@@ -41,13 +41,13 @@ const App = () => {
   return (
     <div>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <EventList events={events} />
       <NumberOfEvents
         numberOfEvents={numberOfEvents}
         setNumberOfEvents={setNumberOfEvents}
         setCurrentNOE={setCurrentNOE} 
         setErrorAlert={setErrorAlert}
       />
+      <EventList events={events} />
     </div>
   );
 };

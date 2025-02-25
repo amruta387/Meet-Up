@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 
-const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setErrorAlert }) => {
+const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setCurrentNOE, setErrorAlert }) => {
     const [error, setError] = useState('');
 
     const handleInputChanged = (event) => {
@@ -12,7 +11,8 @@ const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setErrorAlert }) =>
         } else {
             setError('');
             setErrorAlert('');
-            setNumberOfEvents(value);
+            setNumberOfEvents(value); 
+            setCurrentNOE(value); 
         }
     };
 
@@ -23,7 +23,7 @@ const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setErrorAlert }) =>
                 type="number"
                 className="number-of-events"
                 id="number-of-events-input"
-                value={numberOfEvents || ''}
+                value={numberOfEvents || ''} 
                 onChange={handleInputChanged}
                 data-testid="number-of-events-input"
             />

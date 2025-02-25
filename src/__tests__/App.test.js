@@ -21,7 +21,7 @@ describe('<App /> component', () => {
     });
 
     test('renders NumberOfEvents', () => {
-        const { container } = render(<App />); // Use render() to get the container
+        const { container } = render(<App />);
         const numberOfEvents = container.querySelector('#number-of-events');
         expect(numberOfEvents).toBeInTheDocument();
     });

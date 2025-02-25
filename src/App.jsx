@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-// src/App.jsx
+
 import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
@@ -13,7 +13,6 @@ const App = () => {
   const [numberOfEvents, setNumberOfEvents] = useState(32);
   const [errorAlert, setErrorAlert] = useState('');
   const [events, setEvents] = useState([]);
-  const [currentNOE, setCurrentNOE] = useState(32);
   const [currentCity, setCurrentCity] = useState("See all cities");
 
   useEffect(() => {
@@ -28,14 +27,14 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, numberOfEvents]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
     const filteredEvents = currentCity === "See all cities" ?
       allEvents :
       allEvents.filter(event => event.location === currentCity)
-    setEvents(filteredEvents.slice(0, currentNOE));
+    setEvents(filteredEvents.slice(0, numberOfEvents));
     setAllLocations(extractLocations(allEvents));
   }
   return (

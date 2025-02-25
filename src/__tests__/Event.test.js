@@ -1,5 +1,4 @@
 /* eslint-env jest */
-// src/__tests__/Event.test.js
 
 import React from "react";
 import { render, screen } from "@testing-library/react";
@@ -14,7 +13,6 @@ describe("<Event /> component", () => {
 	beforeEach(async () => {
 		allEvents = await getEvents();
 		
-		// Ensure we have events before rendering
 		if (!allEvents || allEvents.length === 0) {
 			throw new Error("getEvents() returned an empty array");
 		}

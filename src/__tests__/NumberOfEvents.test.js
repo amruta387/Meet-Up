@@ -2,8 +2,10 @@
 /* eslint-env jest */
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
 import NumberOfEvents from '../components/NumberOfEvents';
+import App from "../App";
 
 describe('<NumberOfEvents /> component', () => {
   let setNumberOfEvents, setErrorAlert;
@@ -46,5 +48,33 @@ describe('<NumberOfEvents /> component', () => {
     expect(screen.queryByText('Select number from 1 to 32')).not.toBeInTheDocument();
     expect(setNumberOfEvents).toHaveBeenCalledWith(10);
     expect(setErrorAlert).toHaveBeenCalledWith('');
+  });
+});
+
+describe('<NumberOfEvents /> integration', () => {
+  test('number of events displayed matches the NumberOfEvents input value', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    // Wait for events to load
+    await waitFor(() => {
+      const EventListDOM = AppDOM.querySelector('#event-list');
+      const eventItems = within(EventListDOM).queryAllByRole('listitem');
+      expect(eventItems.length).toBeGreaterThan(0);
+    });
+
+    // Change number of events to 10
+    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
+    const numberInput = within(NumberOfEventsDOM).getByTestId('number-of-events-input');
+    await user.clear(numberInput);
+    await user.type(numberInput, '10');
+
+    // Verify only 10 events are displayed
+    await waitFor(() => {
+      const EventListDOM = AppDOM.querySelector('#event-list');
+      const eventItems = within(EventListDOM).queryAllByRole('listitem');
+      expect(eventItems.length).toBe(10);
+    });
   });
 });

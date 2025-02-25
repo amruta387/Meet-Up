@@ -1,6 +1,6 @@
 // src/mock-data.js
 
-/* const mockData = [
+const mockData = [
     {
         "kind": "calendar#event",
         "etag": "\"3181161784712000\"",
@@ -1368,9 +1368,9 @@
     }
 ];
 
-export default mockData; */
+export default mockData; 
 
-
+/* 
 // src/mock-data.js
 
 
@@ -7817,3 +7817,5 @@ const mockData = [
 
 
 export default mockData;
+
+*/

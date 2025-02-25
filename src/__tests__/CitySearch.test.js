@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 import React from 'react';
 import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

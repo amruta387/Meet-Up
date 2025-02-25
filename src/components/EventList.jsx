@@ -1,7 +1,6 @@
 import React from 'react';
 import Event from "./Event";
 
-
 const EventList = ({ events }) => {
     return (
         <ul id="event-list">
@@ -11,6 +10,4 @@ const EventList = ({ events }) => {
         </ul>
     );
 }
-
-
 export default EventList;

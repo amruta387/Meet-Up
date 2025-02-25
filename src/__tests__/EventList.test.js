@@ -1,6 +1,3 @@
-/* eslint-env jest */
-// src/__tests__/EventList.test.js
-
 import React from 'react';
 import { render, within, waitFor } from '@testing-library/react';
 import { getEvents } from '../api';

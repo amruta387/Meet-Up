@@ -2,31 +2,33 @@ import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
+import { InfoAlert } from './components/Alert';
 import { getEvents, extractLocations } from './api';
 import './App.css';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
-  const [numberOfEvents, setNumberOfEvents] = useState(32); 
-  const [currentNOE, setCurrentNOE] = useState(32); 
+  const [numberOfEvents, setNumberOfEvents] = useState(32);
+  const [currentNOE, setCurrentNOE] = useState(32);
   const [errorAlert, setErrorAlert] = useState('');
   const [events, setEvents] = useState([]);
+  const [infoAlert, setInfoAlert] = useState("");
   const [currentCity, setCurrentCity] = useState("See all cities");
 
   useEffect(() => {
     const fetchLocations = async () => {
-      const events = await getEvents(); 
-      const locations = extractLocations(events); 
+      const events = await getEvents();
+      const locations = extractLocations(events);
       setAllLocations(locations);
     };
 
     fetchLocations();
   }, []);
 
-  
+
   useEffect(() => {
     fetchData();
-  }, [currentCity, currentNOE]); 
+  }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -39,13 +41,20 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="App">
       <h1 className="meetup-heading">MEET-UP</h1>
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
+      <div className="alerts-container">
+        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+      </div>
+      <CitySearch 
+        allLocations={allLocations} 
+        setCurrentCity={setCurrentCity}
+        setInfoAlert={setInfoAlert}
+      />
       <NumberOfEvents
         numberOfEvents={numberOfEvents}
         setNumberOfEvents={setNumberOfEvents}
-        setCurrentNOE={setCurrentNOE} 
+        setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert}
       />
       <EventList events={events} />

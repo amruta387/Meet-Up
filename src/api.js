@@ -31,7 +31,7 @@ const checkToken = async (accessToken) => {
  */
 export const getEvents = async () => {
     // Ensure only events with a location are returned
-    // return mockData.filter(event => event.location !== undefined && event.location !== null);
+
     if (window.location.href.startsWith('http://localhost')) {
         return mockData;
     }

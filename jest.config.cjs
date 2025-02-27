@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
     transform: {

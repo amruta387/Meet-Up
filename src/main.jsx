@@ -12,4 +12,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 
-atatus.notify(new Error('Test Atatus Setup'));
+//atatus.notify(new Error('Test Atatus Setup'));

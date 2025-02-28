@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
-import { InfoAlert } from './components/Alert';
+import { InfoAlert, ErrorAlert } from './components/Alert';
 import { getEvents, extractLocations } from './api';
 import './App.css';
 
@@ -45,6 +45,7 @@ const App = () => {
       <h1 className="meetup-heading">MEET-UP</h1>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+        {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
       </div>
       <CitySearch 
         allLocations={allLocations} 

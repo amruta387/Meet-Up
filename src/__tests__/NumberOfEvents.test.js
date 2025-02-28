@@ -81,21 +81,20 @@ describe('<NumberOfEvents /> integration', () => {
 
   test('User can change the number of events displayed', async () => {
     const user = userEvent.setup();
-    
-    
+
     render(<App />);
-    
+
     await waitFor(() => {
       const EventListDOM = screen.getByTestId('event-list');
       const eventItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(eventItems.length).toBeGreaterThan(0);
+      expect(eventItems.length).toBeGreaterThan(0); 
     });
 
-
     const NumberOfEventsInput = screen.getByTestId('number-of-events-input');
-    
-    await user.type(NumberOfEventsInput, "{backspace}{backspace}10");
-    
+
+    await user.clear(NumberOfEventsInput); 
+    await user.type(NumberOfEventsInput, "10");
+
     await waitFor(() => {
       const EventListDOM = screen.getByTestId('event-list');
       const eventItems = within(EventListDOM).queryAllByRole('listitem');

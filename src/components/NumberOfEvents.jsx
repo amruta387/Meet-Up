@@ -4,18 +4,17 @@ const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setCurrentNOE, setE
     const [error, setError] = useState('');
 
     const handleInputChanged = (event) => {
-        const value = event.target.value;
-        const parsedValue = parseInt(value, 10);
-
-        if (isNaN(parsedValue) || parsedValue <= 0 || parsedValue > 32) {
-            setError('Please enter a valid number between 1 and 32.');
-            setErrorAlert('Please enter a valid number between 1 and 32.');
+        const value = parseInt(event.target.value, 10);
+        if (value < 1 || value > 32) {
+            setError('Select number from 1 to 32');
+            setErrorAlert('Select number from 1 to 32');
         } else {
             setError('');
             setErrorAlert('');
-            setNumberOfEvents(parsedValue);
-            setCurrentNOE(parsedValue);
+            setNumberOfEvents(value); 
+            setCurrentNOE(value);
         }
+            
     };
 
     return (
@@ -25,11 +24,11 @@ const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setCurrentNOE, setE
                 type="number"
                 className="number-of-events"
                 id="number-of-events-input"
-                value={numberOfEvents || ''} 
+                value={numberOfEvents || ''}
                 onChange={handleInputChanged}
                 data-testid="number-of-events-input"
             />
-            
+            {error && <div className="error-alert">{error}</div>}
         </div>
     );
 };

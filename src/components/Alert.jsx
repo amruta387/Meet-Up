@@ -1,7 +1,7 @@
 // src/components/Alert.jsx
 
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 
 class Alert extends Component {

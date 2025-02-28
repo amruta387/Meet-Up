@@ -5,17 +5,18 @@ const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setCurrentNOE, setE
 
     const handleInputChanged = (event) => {
         const value = parseInt(event.target.value, 10);
-        if (value < 1 || value > 32) {
+
+        if (isNaN(value) || value <= 0 || value > 32) {
             setError('Select number from 1 to 32');
-            setErrorAlert('Select number from 1 to 32');
+            setErrorAlert('Select number from 1 to 32'); 
         } else {
-            setError('');
-            setErrorAlert('');
+            setError(''); 
+            setErrorAlert(''); 
             setNumberOfEvents(value); 
             setCurrentNOE(value);
         }
-            
     };
+
 
     return (
         <div id="number-of-events">
@@ -28,7 +29,6 @@ const NumberOfEvents = ({ numberOfEvents, setNumberOfEvents, setCurrentNOE, setE
                 onChange={handleInputChanged}
                 data-testid="number-of-events-input"
             />
-            {error && <div className="error-alert">{error}</div>}
         </div>
     );
 };

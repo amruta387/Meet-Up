@@ -189,9 +189,11 @@ p {
 
 
 .alerts-container {
-  position: fixed;
-  top: 0px;
-  left: 20px;
-  width: 250px;
-  z-index: 1000;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%; 
+  margin-top: 10px; 
+  text-align: center;
 }
+

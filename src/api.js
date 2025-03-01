@@ -2,6 +2,7 @@
 
 
 import mockData from './mock-data';
+import NProgress from 'nprogress';
 
 
 /**
@@ -30,22 +31,29 @@ const checkToken = async (accessToken) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-    // Ensure only events with a location are returned
+    NProgress.start(); // Start the progress bar
 
-    if (window.location.href.startsWith('http://localhost')) {
-        return mockData;
-    }
-    const token = await getAccessToken();
-    if (token) {
-        removeQuery();
-        const url = "https://1ix0u1v8l6.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-        const response = await fetch(url);
-        const result = await response.json();
-        if (result) {
-            return result.events;
-        } else return null;
+    try {
+        // Ensure only events with a location are returned
+        if (window.location.href.startsWith('http://localhost')) {
+            return mockData;
+        }
+        const token = await getAccessToken();
+        if (token) {
+            removeQuery();
+            const url = `https://1ix0u1v8l6.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
+            const response = await fetch(url);
+            const result = await response.json();
+            
+            return result ? result.events : null;
+        }
+    } catch (error) {
+        console.error("Error fetching events:", error);
+    } finally {
+        NProgress.done(); // Complete the progress bar
     }
 };
+
 
 
 export const getAccessToken = async () => {

@@ -26,7 +26,7 @@ const EventGenresChart = ({ events }) => {
 
     const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
         const RADIAN = Math.PI / 180;
-        const radius = outerRadius * 1.2; // Increased multiplier to avoid overlap
+        const radius = outerRadius * 1.35; // Increased distance from the pie chart
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -35,7 +35,7 @@ const EventGenresChart = ({ events }) => {
                 x={x}
                 y={y}
                 fill="#8884d8"
-                fontSize="14px" // Increased font size for better visibility
+                fontSize="16px" // Further increased font size
                 fontWeight="bold"
                 textAnchor={x > cx ? "start" : "end"}
                 dominantBaseline="central"
@@ -54,7 +54,7 @@ const EventGenresChart = ({ events }) => {
                     fill="#8884d8"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={150}
+                    outerRadius={140} // Slightly reduced pie size to accommodate labels
                 />
                 <Tooltip />
             </PieChart>

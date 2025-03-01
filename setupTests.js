@@ -19,3 +19,22 @@ console.error = (...args) => {
     const ignoreMessage = MESSAGES_TO_IGNORE.find(message => args.toString().includes(message));
     if (!ignoreMessage) originalError(...args);
 }
+
+if (typeof window === 'undefined') {
+    global.window = {}; // Create a global window object for Node tests
+}
+
+beforeEach(() => {
+    // Ensure ResizeObserver is mocked for non-browser environments
+    if (typeof window.ResizeObserver === 'undefined') {
+        global.ResizeObserver = jest.fn().mockImplementation(() => ({
+            observe: jest.fn(),
+            unobserve: jest.fn(),
+            disconnect: jest.fn(),
+        }));
+    }
+});
+
+afterEach(() => {
+    jest.restoreAllMocks(); // Restore any mocks after each test
+});

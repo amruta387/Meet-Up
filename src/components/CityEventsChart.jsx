@@ -1,3 +1,5 @@
+
+import React, { useEffect, useState } from "react";
 import {
     ScatterChart,
     Scatter,
@@ -7,7 +9,7 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
-import React, { useEffect, useState } from "react";
+
 
 const CityEventsChart = ({ allLocations, events }) => {
     const [data, setData] = useState([]);

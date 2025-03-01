@@ -34,30 +34,45 @@ export const getEvents = async () => {
     NProgress.start(); // Start the progress bar
 
     try {
-        // Ensure only events with a location are returned
+        // If the app is running locally, return mock data
         if (window.location.href.startsWith('http://localhost')) {
             return mockData;
         }
+
+        // If the user is offline, try to get the cached events from localStorage
         if (!navigator.onLine) {
             const events = localStorage.getItem("lastEvents");
-            NProgress.done();
-            return events?JSON.parse(events):[];
-          }
+            NProgress.done(); // Stop the progress bar
+            return events ? JSON.parse(events) : []; // Return cached events or empty array
+        }
+
+        // If online, attempt to fetch events from the server
         const token = await getAccessToken();
         if (token) {
-            removeQuery();
+            removeQuery(); // Remove any query parameters if necessary
             const url = `https://1ix0u1v8l6.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
             const response = await fetch(url);
             const result = await response.json();
-            
-            return result ? result.events : null;
+
+            // If successful, store the events in localStorage and return them
+            if (result && result.events) {
+                localStorage.setItem("lastEvents", JSON.stringify(result.events));
+                NProgress.done(); // Stop the progress bar
+                return result.events;
+            }
+
+            // If no events found, return an empty array
+            NProgress.done(); // Stop the progress bar
+            return [];
         }
     } catch (error) {
+        // Log the error and continue (offline caching will still work)
         console.error("Error fetching events:", error);
     } finally {
-        NProgress.done(); // Complete the progress bar
+        NProgress.done(); // Complete the progress bar in all cases
     }
 };
+
 
 
 

@@ -4,7 +4,11 @@ import App from './App.jsx'
 import './index.css'
 import * as atatus from 'atatus-spa';
 
-atatus.config('5e82b75a5d3e4c0a8048d4a012e93695').install();
+try {
+  atatus.config(process.env.NEXT_PUBLIC_ATATUS_API_KEY).install();
+} catch (error) {
+  console.error("Atatus failed to initialize:", error);
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -12,4 +16,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 
-atatus.notify(new Error('Test Atatus Setup'));
+//atatus.notify(new Error('Test Atatus Setup'));

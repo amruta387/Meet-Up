@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
+import CityEventsChart from "./components/CityEventsChart";
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 import { getEvents, extractLocations } from './api';
 import './App.css';
@@ -40,7 +41,7 @@ const App = () => {
         setEvents(filteredEvents.slice(0, currentNOE)); 
     setAllLocations(extractLocations(allEvents));
   };
-  
+
   useEffect(() => {
     if (navigator.onLine) {
       setWarningAlert("");  // Clear warning if online
@@ -69,6 +70,7 @@ const App = () => {
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
+      <CityEventsChart allLocations={allLocations} events={events} />
       <EventList events={events} />
     </div>
   );
